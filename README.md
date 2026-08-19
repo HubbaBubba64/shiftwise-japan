@@ -145,6 +145,8 @@ When configured, Next.js emits the `google-site-verification` metadata tag on th
 
 Calculator state currently stays in React memory and is lost on refresh. It is not sent to a database. Results are estimates based entirely on entered assumptions and do not constitute legal, immigration, tax, or financial advice. The status card compares entries with configured general references; it does not determine individual eligibility or calculate tax or insurance.
 
+Vercel Web Analytics is integrated for standard page views only. No custom product events are sent, and calculator values such as income, wages, work hours, employer names, names, or email addresses are not attached to analytics. Enable Web Analytics for the project in the Vercel dashboard before deploying. Custom events are intentionally omitted because they are not available on the Hobby plan.
+
 ## Next milestones
 
 Later work can add persistence and authentication, a dashboard and history, and separately verified tax/NHI rule engines. Those features should not reuse unverified numeric rules.

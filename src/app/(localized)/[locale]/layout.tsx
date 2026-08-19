@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Noto_Sans_JP } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { notFound } from "next/navigation";
 import { LocaleProvider } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
@@ -18,5 +19,5 @@ export function generateStaticParams() { return locales.map((locale) => ({ local
 export default async function LocalizedLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
-  return <html lang={locale} data-scroll-behavior="smooth"><body className={`${manrope.variable} ${noto.variable}`}><LocaleProvider locale={locale}><SiteHeader/>{children}</LocaleProvider></body></html>;
+  return <html lang={locale} data-scroll-behavior="smooth"><body className={`${manrope.variable} ${noto.variable}`}><LocaleProvider locale={locale}><SiteHeader/>{children}</LocaleProvider><Analytics/></body></html>;
 }
