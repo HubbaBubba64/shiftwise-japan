@@ -8,7 +8,7 @@ const copy = {
   en: {
     eyebrow: "Built with students",
     title: "What's coming next",
-    subtitle: "We're building ShiftWise step by step based on what students actually need.",
+    subtitle: "We're building BaitoPlan step by step based on what students actually need.",
     groups: [
       { title: "Available now", tone: "available", icon: Check, items: ["Variable shift tracking", "Income forecasting", "Multiple jobs", "Normal / long-vacation work tracking", "English and Japanese"] },
       { title: "Coming next", tone: "next", icon: Sparkles, items: ["Resident tax estimator", "National Health Insurance estimator", "Saved shift history", "More municipality support"] },
@@ -19,13 +19,13 @@ const copy = {
     modalBody: "Choose one idea for now. Voting is just a preview—we're not saving or sending your choice yet.",
     close: "Close",
     submit: "Choose this idea",
-    thanks: "Thanks for helping shape ShiftWise!",
+    thanks: "Thanks for helping shape BaitoPlan!",
     noted: "Your choice stays on this screen for now. A future version will connect it to real voting.",
   },
   ja: {
     eyebrow: "留学生と一緒につくる",
     title: "これから追加すること",
-    subtitle: "留学生が本当に必要としていることを大切に、ShiftWiseを少しずつ育てています。",
+    subtitle: "留学生が本当に必要としていることを大切に、BaitoPlan（バイトプラン）を少しずつ育てています。",
     groups: [
       { title: "今できること", tone: "available", icon: Check, items: ["変動シフトの記録", "収入予測", "複数のアルバイト", "通常期間・長期休暇の勤務記録", "日本語と英語"] },
       { title: "次につくること", tone: "next", icon: Sparkles, items: ["住民税の目安", "国民健康保険料の目安", "シフト履歴の保存", "対応する自治体を増やす"] },
@@ -36,7 +36,7 @@ const copy = {
     modalBody: "今はひとつ選んでみてください。この投票画面はプレビューのため、選択内容はまだ保存・送信されません。",
     close: "閉じる",
     submit: "この機能を選ぶ",
-    thanks: "ShiftWiseづくりへのご協力、ありがとうございます！",
+    thanks: "BaitoPlan（バイトプラン）づくりへのご協力、ありがとうございます！",
     noted: "今はこの画面内だけに選択が残ります。今後、実際の投票につなげる予定です。",
   },
 } as const;

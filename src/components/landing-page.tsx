@@ -17,6 +17,6 @@ export function LandingPage() {
     <section className="benefits shell" id="how-it-works">{benefits.map(([Icon,title,body],index)=><article key={title}><span className="benefit-number">0{index+1}</span><Icon/><h2>{t(title)}</h2><p>{t(body)}</p></article>)}</section>
     <PublicRoadmap />
     <section className="cta-band shell"><div><p className="eyebrow"><span />{t("startWithKnown")}</p><h2>{t("calculatorTitle")}</h2></div><Link className="button primary light" href={`/${locale}/calculator`}>{t("primaryCta")}<ArrowRight size={18}/></Link></section>
-    <footer className="shell"><p>{t("footer")}</p><Disclaimer/><p>© 2026 ShiftWise Japan</p></footer>
+    <footer className="shell"><p>{t("footer")}</p><Disclaimer/><p>© 2026 {locale === "ja" ? "BaitoPlan（バイトプラン）" : "BaitoPlan"}</p></footer>
   </main>;
 }

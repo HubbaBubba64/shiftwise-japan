@@ -1,6 +1,6 @@
-# ShiftWise Japan
+# BaitoPlan
 
-ShiftWise Japan is a mobile-first planning tool that helps international students understand how changing part-time shifts affect their projected annual gross income.
+BaitoPlan is a mobile-first planning tool that helps international students understand how changing part-time shifts affect their projected annual gross income.
 
 ## First milestone
 
@@ -91,7 +91,7 @@ The initial indexable guides cover work hours, international-student part-time i
 Set the public production origin when deploying so canonical, OpenGraph, sitemap, and robots URLs use the correct domain:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://shiftwise-japan.com
+NEXT_PUBLIC_SITE_URL=https://shiftwise-japan.vercel.app
 ```
 
 This value is optional on Vercel. URL resolution uses the first available value in this order:
@@ -110,7 +110,7 @@ Resolved production URLs must use HTTPS and contain only an origin. A production
 3. For a custom canonical domain, optionally add this in **Project Settings → Environment Variables**:
 
    ```text
-   NEXT_PUBLIC_SITE_URL=https://shiftwise-japan.com
+   NEXT_PUBLIC_SITE_URL=https://shiftwise-japan.vercel.app
    ```
 
    Replace the example with the final canonical HTTPS origin if a different domain is used. When it is omitted, Vercel's `VERCEL_PROJECT_PRODUCTION_URL` is preferred, followed by `VERCEL_URL`. Because the resolved value is embedded in statically generated metadata, redeploy after changing it.
@@ -119,7 +119,7 @@ Resolved production URLs must use HTTPS and contain only an origin. A production
 For a local production-equivalent build in PowerShell:
 
 ```powershell
-$env:NEXT_PUBLIC_SITE_URL="https://shiftwise-japan.com"
+$env:NEXT_PUBLIC_SITE_URL="https://shiftwise-japan.vercel.app"
 npm run build
 npm run start
 ```
@@ -127,7 +127,7 @@ npm run start
 For bash-compatible shells:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://shiftwise-japan.com npm run build
+NEXT_PUBLIC_SITE_URL=https://shiftwise-japan.vercel.app npm run build
 npm run start
 ```
 

@@ -19,7 +19,7 @@ test("homepage roadmap offers a non-persistent feature voting preview", async ({
   await expect(dialog.getByRole("heading", { name: "What would help you most?" })).toBeVisible();
   await dialog.getByText("Payslip upload", { exact: true }).click();
   await dialog.getByRole("button", { name: "Choose this idea" }).click();
-  await expect(dialog.getByText("Thanks for helping shape ShiftWise!" )).toBeVisible();
+  await expect(dialog.getByText("Thanks for helping shape BaitoPlan!" )).toBeVisible();
 });
 
 for (const viewport of [{ width: 375, height: 812 }, { width: 768, height: 1024 }, { width: 1440, height: 900 }]) {
@@ -51,7 +51,7 @@ test("Japanese SEO page has localized metadata and switches to its English equiv
   await page.goto("/ja/留学生-28時間");
   await expect(page.locator("html")).toHaveAttribute("lang", "ja");
   await expect(page.getByRole("heading", { level: 1, name: "留学生のアルバイト時間を自動計算" })).toBeVisible();
-  await expect(page).toHaveTitle("留学生の週28時間アルバイト計算ツール｜ShiftWise Japan");
+  await expect(page).toHaveTitle("留学生の週28時間アルバイト計算ツール｜BaitoPlan（バイトプラン）");
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /\/ja\/%E7%95%99%E5%AD%A6%E7%94%9F-28%E6%99%82%E9%96%93$/);
   await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute("href", /\/en\/international-student-work-hours-japan$/);
   await expect(page.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveAttribute("href", /\/en\/international-student-work-hours-japan$/);

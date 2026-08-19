@@ -7,11 +7,11 @@ describe("production site origin", () => {
   });
 
   it("uses VERCEL_PROJECT_PRODUCTION_URL when the explicit URL is absent", () => {
-    expect(resolveSiteUrl({ VERCEL_PROJECT_PRODUCTION_URL: "shiftwise-production.vercel.app", VERCEL_URL: "preview.vercel.app" }, true)).toBe("https://shiftwise-production.vercel.app");
+    expect(resolveSiteUrl({ VERCEL_PROJECT_PRODUCTION_URL: "example-production.vercel.app", VERCEL_URL: "preview.vercel.app" }, true)).toBe("https://example-production.vercel.app");
   });
 
   it("uses VERCEL_URL when no explicit or project production URL exists", () => {
-    expect(resolveSiteUrl({ VERCEL_URL: "shiftwise-preview.vercel.app" }, true)).toBe("https://shiftwise-preview.vercel.app");
+    expect(resolveSiteUrl({ VERCEL_URL: "example-preview.vercel.app" }, true)).toBe("https://example-preview.vercel.app");
   });
 
   it("uses localhost only in local development", () => {
@@ -20,14 +20,14 @@ describe("production site origin", () => {
   });
 
   it("normalizes a production HTTPS origin", () => {
-    expect(normalizeSiteUrl("https://shiftwise.example/", true)).toBe("https://shiftwise.example");
+    expect(normalizeSiteUrl("https://example.com/", true)).toBe("https://example.com");
   });
 
   it.each([
-    "http://shiftwise.example",
-    "https://shiftwise.example/path",
-    "https://shiftwise.example?preview=true",
-    "https://user:secret@shiftwise.example",
+    "http://example.com",
+    "https://example.com/path",
+    "https://example.com?preview=true",
+    "https://user:secret@example.com",
     "not-a-url",
   ])("rejects an unsafe production value: %s", (value) => {
     expect(() => normalizeSiteUrl(value, true)).toThrow();

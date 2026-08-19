@@ -12,9 +12,9 @@ export function SiteHeader() {
   const alternatePath = getAlternatePath(pathname, locale);
   return (
     <header className="site-header">
-      <Link className="brand" href={`/${locale}`} aria-label="ShiftWise Japan home">
-        <span className="brand-mark">S</span>
-        <span>ShiftWise <b>Japan</b></span>
+      <Link className="brand" href={`/${locale}`} aria-label={`${locale === "ja" ? "BaitoPlan（バイトプラン）" : "BaitoPlan"} home`}>
+        <span className="brand-mark">B</span>
+        <span>{locale === "ja" ? "BaitoPlan（バイトプラン）" : "BaitoPlan"}</span>
       </Link>
       <nav aria-label="Primary navigation">
         <Link href={`/${locale}#how-it-works`}>{t("navHow")}</Link>
