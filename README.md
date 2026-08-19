@@ -94,19 +94,26 @@ Set the public production origin when deploying so canonical, OpenGraph, sitemap
 NEXT_PUBLIC_SITE_URL=https://shiftwise-japan.com
 ```
 
-Production builds require this value and fail if it is missing, malformed, uses localhost, includes a path, or does not use HTTPS. Local development uses `https://shiftwise-japan.com` as metadata fallback when the variable is omitted.
+This value is optional on Vercel. URL resolution uses the first available value in this order:
+
+1. `NEXT_PUBLIC_SITE_URL`
+2. `https://${VERCEL_PROJECT_PRODUCTION_URL}`
+3. `https://${VERCEL_URL}`
+4. `http://localhost:3000` in local development only
+
+Resolved production URLs must use HTTPS and contain only an origin. A production build fails only when none of the three production URL variables is available or when the resolved value is malformed.
 
 ## Deploying to Vercel
 
 1. Import the GitHub repository into Vercel and keep the detected framework preset as **Next.js**.
 2. Keep the standard install and build settings (`npm install` and `npm run build`). No custom output directory or `vercel.json` is required.
-3. In **Project Settings → Environment Variables**, add:
+3. For a custom canonical domain, optionally add this in **Project Settings → Environment Variables**:
 
    ```text
    NEXT_PUBLIC_SITE_URL=https://shiftwise-japan.com
    ```
 
-   Replace the example with the final canonical HTTPS origin if a different domain is used. Set it for the Production environment before deploying. Because this value is embedded in statically generated metadata, redeploy after changing it.
+   Replace the example with the final canonical HTTPS origin if a different domain is used. When it is omitted, Vercel's `VERCEL_PROJECT_PRODUCTION_URL` is preferred, followed by `VERCEL_URL`. Because the resolved value is embedded in statically generated metadata, redeploy after changing it.
 4. Deploy, then verify `/en`, `/ja`, `/sitemap.xml`, and `/robots.txt` on the public domain. Confirm that canonical and `hreflang` links use the same production origin.
 
 For a local production-equivalent build in PowerShell:
@@ -124,7 +131,7 @@ NEXT_PUBLIC_SITE_URL=https://shiftwise-japan.com npm run build
 npm run start
 ```
 
-`NEXT_PUBLIC_SITE_URL` is the only deployment environment variable currently required. The anonymous MVP does not need database, authentication, email, storage, AI, tax, or insurance credentials.
+No manually configured environment variable is required for a normal Vercel deployment because Vercel supplies its URL variables automatically. `NEXT_PUBLIC_SITE_URL` is the only optional application variable and overrides those values. The anonymous MVP does not need database, authentication, email, storage, AI, tax, or insurance credentials.
 
 ## Privacy and limitations
 
