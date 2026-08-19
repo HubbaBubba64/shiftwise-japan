@@ -133,6 +133,14 @@ npm run start
 
 No manually configured environment variable is required for a normal Vercel deployment because Vercel supplies its URL variables automatically. `NEXT_PUBLIC_SITE_URL` is the only optional application variable and overrides those values. The anonymous MVP does not need database, authentication, email, storage, AI, tax, or insurance credentials.
 
+For Google Search Console HTML-tag verification, add the token value from Search Console to the relevant Vercel environments and redeploy:
+
+```text
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-site-verification-token
+```
+
+When configured, Next.js emits the `google-site-verification` metadata tag on the root and localized pages. Do not include the surrounding `<meta>` tag in the environment variable value.
+
 ## Privacy and limitations
 
 Calculator state currently stays in React memory and is lost on refresh. It is not sent to a database. Results are estimates based entirely on entered assumptions and do not constitute legal, immigration, tax, or financial advice. The status card compares entries with configured general references; it does not determine individual eligibility or calculate tax or insurance.

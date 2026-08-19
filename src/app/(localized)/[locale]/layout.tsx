@@ -5,12 +5,13 @@ import { LocaleProvider } from "@/components/locale-provider";
 import { SiteHeader } from "@/components/site-header";
 import { isLocale, locales } from "@/i18n/routing";
 import { siteUrl } from "@/lib/site";
+import { verificationMetadata } from "@/lib/verification";
 import "../../globals.css";
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 const noto = Noto_Sans_JP({ subsets: ["latin"], variable: "--font-noto" });
 
-export const metadata: Metadata = { metadataBase: new URL(siteUrl) };
+export const metadata: Metadata = { metadataBase: new URL(siteUrl), verification: verificationMetadata };
 export const dynamicParams = false;
 export function generateStaticParams() { return locales.map((locale) => ({ locale })); }
 
