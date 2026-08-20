@@ -5,6 +5,31 @@ test("root offers stable crawlable language choices", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Choose your language" })).toBeVisible();
   await expect(page.getByRole("link", { name: "English" })).toHaveAttribute("href", "/en");
   await expect(page.getByRole("link", { name: "日本語" })).toHaveAttribute("href", "/ja");
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "index, follow");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "http://localhost:3000/");
+});
+
+test("all sitemap pages allow indexing in metadata and response headers", async ({ page, request }) => {
+  const sitemapResponse = await request.get("/sitemap.xml");
+  const sitemapText = await sitemapResponse.text();
+  const paths = [...sitemapText.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => new URL(match[1]).pathname);
+
+  expect(paths).toContain("/");
+  expect(paths).toContain("/ja/");
+  expect(paths).toContain("/en/");
+
+  for (const path of paths) {
+    const response = await page.goto(path);
+    expect(response?.headers()["x-robots-tag"]?.toLowerCase() ?? "").not.toContain("noindex");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "index, follow");
+  }
+});
+
+test("localized homepages self-canonicalize with trailing slashes", async ({ page }) => {
+  await page.goto("/ja/");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "http://localhost:3000/ja/");
+  await page.goto("/en/");
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "http://localhost:3000/en/");
 });
 
 test("homepage roadmap offers a non-persistent feature voting preview", async ({ page }) => {

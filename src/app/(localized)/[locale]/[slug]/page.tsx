@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: page.title,
     description: page.description,
     alternates: { canonical: absoluteUrl(canonicalPath), languages: { en: absoluteUrl(locale === "en" ? canonicalPath : alternatePath), ja: absoluteUrl(locale === "ja" ? canonicalPath : alternatePath), "x-default": absoluteUrl(englishPath) } },
+    robots: { index: true, follow: true },
     openGraph: { title: page.title, description: page.description, url: absoluteUrl(canonicalPath), siteName: "BaitoPlan", locale: locale === "ja" ? "ja_JP" : "en_US", alternateLocale: locale === "ja" ? ["en_US"] : ["ja_JP"], type: "article" },
   };
 }

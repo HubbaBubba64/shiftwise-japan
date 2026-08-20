@@ -13,7 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     title,
     description,
-    alternates: { canonical: absoluteUrl(`/${locale}`), languages: { en: absoluteUrl("/en"), ja: absoluteUrl("/ja"), "x-default": absoluteUrl("/") } },
+    alternates: { canonical: absoluteUrl(`/${locale}/`), languages: { en: absoluteUrl("/en/"), ja: absoluteUrl("/ja/"), "x-default": absoluteUrl("/") } },
+    robots: { index: true, follow: true },
     openGraph: { title, description, url: absoluteUrl(`/${locale}`), locale: isJa ? "ja_JP" : "en_US", alternateLocale: isJa ? ["en_US"] : ["ja_JP"], type: "website", siteName: "BaitoPlan" },
   };
 }

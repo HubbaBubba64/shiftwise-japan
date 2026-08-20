@@ -5,8 +5,8 @@ import { absoluteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "BaitoPlan | Choose your language",
   description: "Choose English or Japanese to use BaitoPlan.",
-  alternates: { canonical: absoluteUrl("/"), languages: { en: absoluteUrl("/en"), ja: absoluteUrl("/ja"), "x-default": absoluteUrl("/") } },
-  robots: { index: false, follow: true },
+  alternates: { canonical: absoluteUrl("/"), languages: { en: absoluteUrl("/en/"), ja: absoluteUrl("/ja/"), "x-default": absoluteUrl("/") } },
+  robots: { index: true, follow: true },
 };
 
 export default function LanguageChoice() {
